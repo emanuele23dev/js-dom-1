@@ -1,7 +1,7 @@
 // Inseriamo in pagina l’immagine della lampadina spenta che trovate in allegato e accanto un bottone con la scritta “Accendi”.
 // Al click del bottone, la lampadina dovrà accendersi (dovremo quindi utilizzare l’immagine della lampadina accesa, sempre in allegato)
 
-const lampadaSpenta = document.getElementById("img1");
+const lampEl = document.getElementById("img1");
 const buttonEl = document.getElementById("myButton");
 
 buttonEl.style.borderRadius = '2rem'
@@ -11,8 +11,18 @@ buttonEl.style.color = "white";
 buttonEl.style.border = "none";
 
 
-
 buttonEl.addEventListener("click", function () {
-  buttonEl.textContent = "Spegni";
-  lampadaSpenta.src = "./assets/img/yellow_lamp.png";
+
+  const is_on = lampEl.getAttribute("src").includes("yellow");
+  console.log(is_on);
+  
+
+  if (is_on) {
+    lampEl.setAttribute("src", "./assets/img/white_lamp.png");
+    buttonEl.textContent = "Accendi";
+  }
+  else {
+    lampEl.src = "./assets/img/yellow_lamp.png";
+    buttonEl.textContent = "Spegni";
+  }
 });
